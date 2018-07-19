@@ -3,6 +3,7 @@ layout: "default"
 ---
 
 {% assign next_is_spoken = false %}
+{% assign next_location = "" %}
 
 <div class="title">
   {{  site.data.the_sword.title }}
@@ -15,9 +16,14 @@ layout: "default"
 <br />
 
 {% for item in site.data.the_sword.lines %}
-{% capture next_location %}
-{{ item | replace: 'INT. ', '' | replace: 'EXT. ', '' | replace: '- DAY', '' | replace: '- NIGHT', '' }}
-{% endcapture %}
+{% for location in site.data.the_sword.locations %}
+{% if item contains location %}
+{% assign next_location = location %}
+{% break %}
+{% else %}
+{% assign next_location = "" %}
+{% endif %}
+{% endfor %}
 {% if next_is_spoken == true %}
 
 <div class="spoken">
