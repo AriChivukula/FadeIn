@@ -12,5 +12,5 @@ layout: "default"
 <br />
 <br />
 {% for item in site.data.the_sword.lines %}
-  <div>{{ item }}</div>
+  <div class="narrated">{{ item }}</div>
 {% endfor %}
