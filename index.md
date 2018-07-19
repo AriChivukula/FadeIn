@@ -19,7 +19,7 @@ layout: "default"
 </div>
 {% assign next_is_spoken = false %}
 {% elsif site.data.the_sword.characters contains item %}
-<div class="speaker">
+<div class="speaker character-name" title="{{ site.data.the_sword.characters[item] }}">
   {{ item }}
 </div>
 {% assign next_is_spoken = true %}
