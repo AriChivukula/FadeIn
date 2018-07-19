@@ -18,6 +18,7 @@ jobs:
       region: us-east-1
       local_dir: _site
       acl: public_read
+      skip_cleanup: true
   - stage: Actualize
     if: type = api
     script:
