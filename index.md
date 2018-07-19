@@ -2,6 +2,7 @@
 layout: "default"
 ---
 
+{% assign next_is_spoken = false %}
 <div class="title">
   {{  site.data.the_sword.title }}
 </div>
