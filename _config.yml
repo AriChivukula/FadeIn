@@ -1,6 +1,3 @@
 source: ./_static
 
-include:
-- _headers
-
 title: Flash Draft
