@@ -25,7 +25,7 @@ layout: "default"
 </div>
 
 {% assign next_is_spoken = false %}
-{% elsif site.data.the_sword.locations[next_location] != undefined %}
+{% elsif site.data.the_sword.locations contains next_location %}
 
 <div class="located location-name" title="{{ site.data.the_sword.locations[next_location] }}">
   {{ item }}
