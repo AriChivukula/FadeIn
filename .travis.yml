@@ -8,8 +8,6 @@ jobs:
     if: ( branch != master ) AND (type = push)
     script:
     - bundle exec jekyll build -V
-    - cat /home/travis/build/AriChivukula/flash.draft/_site/index.html
-    - bundle exec htmlproofer
   - stage: Deploy
     if: ( branch = master ) AND (type = push)
     script:
