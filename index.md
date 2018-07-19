@@ -14,8 +14,8 @@ layout: "default"
 
 {% for item in site.data.the_sword.lines %}
 {% for location in site.data.the_sword.locations %}
-{% if item contains location %}
-{% assign next_location = location %}
+{% if item contains location[0] %}
+{% assign next_location = location[0] %}
 {% break %}
 {% endif %}
 {% endfor %}
