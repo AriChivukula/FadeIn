@@ -7,11 +7,11 @@ jobs:
   - stage: Lint
     if: ( branch != master ) AND (type = push)
     script:
-    - bundle exec jekyll build -V
+    - bundle exec jekyll build -V -S ./_source
   - stage: Deploy
     if: ( branch = master ) AND (type = push)
     script:
-    - bundle exec jekyll build -V
+    - bundle exec jekyll build -V -S ./_source
     deploy:
       provider: s3
       bucket: "${TF_VAR_DOMAIN}"
