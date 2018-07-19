@@ -15,7 +15,6 @@ layout: "default"
 <br />
 
 {% for item in site.data.the_sword.lines %}
-{{ product.title | replace: 'Awesome', 'Mega' }}
 {% capture next_location %}
 {{ item | replace: 'INT. ', '' | replace: 'EXT. ', '' | replace: '- DAY', '' | replace: '- NIGHT', '' }}
 {% endcapture %}
@@ -26,7 +25,7 @@ layout: "default"
 </div>
 
 {% assign next_is_spoken = false %}
-{% elsif site.data.the_sword.locations contains next_location %}
+{% elsif site.data.the_sword.locations[next_location] != undefined %}
 
 <div class="located location-name" title="{{ site.data.the_sword.locations[next_location] }}">
   {{ item }}
