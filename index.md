@@ -17,6 +17,7 @@ layout: "default"
 <div class="spoken">
   {{ item }}
 </div>
+
 {% assign next_is_spoken = false %}
 {% elsif site.data.the_sword.characters contains item %}
 <div class="speaker character-name" title="{{ site.data.the_sword.characters[item] }}">
@@ -27,5 +28,6 @@ layout: "default"
 <div class="narrated">
   {{ item }}
 </div>
+
 {% endif %}
 {% endfor %}
