@@ -3,15 +3,15 @@ layout: "default"
 ---
 
 {% assign next_is_spoken = false %}
+
 <div class="title">
   {{  site.data.the_sword.title }}
 </div>
-<br />
+
 <div class="author">
   {{  site.data.the_sword.author }}
 </div>
-<br />
-<br />
+
 {% for item in site.data.the_sword.lines %}
   {% if next_is_spoken %}
     <div class="spoken">{{ item }}</div>
