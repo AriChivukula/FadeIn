@@ -2,6 +2,15 @@
 layout: "default"
 ---
 
+<div class="title">
+  {{  site.data.the_sword.title }}
+</div>
+<br />
+<div class="author">
+  {{  site.data.the_sword.author }}
+</div>
+<br />
+<br />
 {% for item in site.data.the_sword.lines %}
-  <h2>{{ item }}</h2>
+  <div>{{ item }}</div>
 {% endfor %}
