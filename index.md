@@ -2,7 +2,7 @@
 layout: "default"
 ---
 
-{% assign next_is_spoken = false %}
+{% increment next_is_spoken %}
 
 <div class="title">
   {{  site.data.the_sword.title }}
@@ -13,13 +13,19 @@ layout: "default"
 </div>
 
 {% for item in site.data.the_sword.lines %}
-  {% if next_is_spoken == true %}
-    <div class="spoken">{{ item }}</div>
-    {% assign next_is_spoken = false %}
+  {% if next_is_spoken == 1 %}
+    <div class="spoken">
+      {{ item }}
+    </div>
+    {% decrement next_is_spoken %}
   {% elsif site.data.the_sword.characters contains item %}
-    <div class="speaker">{{ item }}</div>
-    {% assign next_is_spoken = true %}
+    <div class="speaker">
+      {{ item }}
+    </div>
+    {% increment next_is_spoken %}
   {% else %}
-    <div class="narrated">{{ item }}</div>
+    <div class="narrated">
+      {{ item }}
+    </div>
   {% endif %}
 {% endfor %}
