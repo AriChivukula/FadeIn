@@ -2,9 +2,6 @@
 layout: "default"
 ---
 
-{% assign next_is_spoken = false %}
-{% assign next_location = "" %}
-
 <div class="title">
   {{  site.data.the_sword.title }}
 </div>
