@@ -1,0 +1,28 @@
+language: ruby
+rvm:
+- 2.5.1
+cache: bundler
+jobs:
+  include:
+  - stage: Lint
+    if: ( branch != master ) AND (type = push)
+    script:
+    - bundle exec jekyll build -V
+  - stage: Deploy
+    if: ( branch = master ) AND (type = push)
+    script:
+    - bundle exec jekyll build -V
+    deploy:
+      provider: s3
+      bucket: "${TF_VAR_DOMAIN}"
+      region: us-east-1
+      local_dir: _site
+      acl: public_read
+  - stage: Actualize
+    if: type = api
+    script:
+    - wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
+    - unzip terraform_0.11.7_linux_amd64.zip
+    - rm terraform_0.11.7_linux_amd64.zip
+    - terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=infra.tfstate"
+    - terraform apply -auto-approve
