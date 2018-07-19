@@ -6,7 +6,6 @@ jobs:
   - stage: Lint
     if: ( branch != master ) AND (type = push)
     script:
-    - bundle outdated
     - bundle exec jekyll build
     - bundle exec htmlproofer
   - stage: Deploy
