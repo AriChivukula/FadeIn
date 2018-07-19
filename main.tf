@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "fd_bucket" {
 
 resource "aws_acm_certificate" "fd_certificate" {
   domain_name               = "${var.DOMAIN}"
-  subject_alternative_names = [ "*.${var.DOMAIN}" ]
+  subject_alternative_names = ["*.${var.DOMAIN}"]
   validation_method         = "DNS"
 
   tags {
@@ -33,12 +33,12 @@ resource "aws_acm_certificate" "fd_certificate" {
 }
 
 resource "aws_cloudfront_distribution" "fd_distribution" {
-  aliases = [ "*.${var.DOMAIN}", "${var.DOMAIN}" ]
+  aliases = ["*.${var.DOMAIN}", "${var.DOMAIN}"]
   enabled = true
 
   default_cache_behavior {
-    allowed_methods = [ "HEAD", "GET" ]
-    cached_methods  = [ "HEAD", "GET" ]
+    allowed_methods = ["HEAD", "GET"]
+    cached_methods  = ["HEAD", "GET"]
     compress        = false
     default_ttl     = 0
 
@@ -62,7 +62,7 @@ resource "aws_cloudfront_distribution" "fd_distribution" {
       http_port              = 80
       https_port             = 443
       origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = [ "TLSv1", "TLSv1.1", "TLSv1.2" ]
+      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
   }
 
@@ -73,7 +73,7 @@ resource "aws_cloudfront_distribution" "fd_distribution" {
   }
 
   tags {
-    Name = "${var.BANE}"
+    Name = "${var.NAME}"
   }
 
   viewer_certificate {
@@ -117,7 +117,7 @@ resource "aws_route53_record" "fd_record_wild" {
 resource "aws_route53_record" "fd_record_validation" {
   count   = "${length(aws_acm_certificate.fd_certificate.domain_validation_options)}"
   name    = "${lookup(aws_acm_certificate.fd_certificate.domain_validation_options[count.index], "resource_record_name")}"
-  records = [ "${lookup(aws_acm_certificate.fd_certificate.domain_validation_options[count.index], "resource_record_value")}" ]
+  records = ["${lookup(aws_acm_certificate.fd_certificate.domain_validation_options[count.index], "resource_record_value")}"]
   ttl     = 60
   type    = "${lookup(aws_acm_certificate.fd_certificate.domain_validation_options[count.index], "resource_record_type")}"
   zone_id = "${aws_route53_zone.fd_zone.zone_id}"
