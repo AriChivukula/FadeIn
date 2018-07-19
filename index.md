@@ -12,5 +12,15 @@ layout: "default"
 <br />
 <br />
 {% for item in site.data.the_sword.lines %}
-  <div class="narrated">{{ item }}</div>
+  {% if next_is_spoken %}
+    <div class="spoken">{{ item }}</div>
+    <br />
+    {% assign next_is_spoken = false %}
+  {% elsif site.data.the_sword.characters contains item %}
+    <div class="speaker">{{ item }}</div>
+    {% assign next_is_spoken = true %}
+  {% else %}
+    <div class="narrated">{{ item }}</div>
+    <br />
+  {% endif %}
 {% endfor %}
