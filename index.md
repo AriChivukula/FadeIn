@@ -18,10 +18,8 @@ layout: "default"
 {% for item in site.data.the_sword.lines %}
 {% for location in site.data.the_sword.locations %}
 {% if item contains location %}
-{% next_location = location %}
+{% assign next_location = location %}
 {% break %}
-{% else %}
-{% next_location = "" %}
 {% endif %}
 {% endfor %}
 {% if next_is_spoken == true %}
@@ -30,7 +28,7 @@ layout: "default"
   {{ item }}
 </div>
 
-{% next_is_spoken = false %}
+{% assign next_is_spoken = false %}
 {% elsif site.data.the_sword.locations contains next_location %}
 
 <div class="located location-name" title="{{ site.data.the_sword.locations[next_location] }}">
@@ -43,7 +41,7 @@ layout: "default"
   {{ item }}
 </div>
 
-{% next_is_spoken = true %}
+{% assign next_is_spoken = true %}
 {% else %}
 
 <div class="narrated">
@@ -51,4 +49,5 @@ layout: "default"
 </div>
 
 {% endif %}
+{% assign next_location = "" %}
 {% endfor %}
