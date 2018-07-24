@@ -25,7 +25,13 @@
         "type": "number"
       },
       "document": {
-        "title": {
+        "location": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "exposure": {
           "type": "string"
         },
         "lines": {
