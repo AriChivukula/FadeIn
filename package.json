@@ -1,0 +1,12 @@
+{
+  "name": "flash.draft",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@babel/polyfill": "7.0.0-beta.54",
+    "@types/node": "10.5.2",
+    "foia-db": "0.0.5",
+    "ts-node": "7.0.0",
+    "typescript": "2.9.2"
+  }
+}
