@@ -30,3 +30,12 @@ gulp.task(
     }))
     .pipe(gulp.dest("static/index.js")),
 );
+
+gulp.task(
+  "build",
+  gulp.series(
+    "build:1",
+    "build:2",
+    "build:3",
+  ),
+);
