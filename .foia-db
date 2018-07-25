@@ -1,0 +1,43 @@
+{
+  "folders": {
+    "character": {
+      "key": {
+        "type": "string"
+      },
+      "document": {
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "location": {
+      "key": {
+        "type": "string"
+      },
+      "document": {
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "scene": {
+      "key": {
+        "type": "number"
+      },
+      "document": {
+        "location": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "string[]"
+        }
+      }
+    }
+  }
+}
