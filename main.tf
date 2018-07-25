@@ -25,19 +25,23 @@ resource "aws_s3_bucket" "fd_bucket" {
 locals {
   files = [
     {
-      file = ".foia-db.json"
+      local = ".foia-db.json"
+      remote = ".foia-db.json"
       type = "application/json"
     },
     {
-      file = "static/index.html"
+      local = "static/index.html"
+      remote = "index.html"
       type = "text/html"
     },
     {
-      file = "static/index.js"
+      local = "static/index.js"
+      remote = "index.js"
       type = "application/javascript"
     },
     {
-      file = "static/index.css"
+      local = "static/index.css"
+      remote = "index.css"
       type = "text/css"
     },
   ]
@@ -46,11 +50,11 @@ locals {
 resource "aws_s3_bucket_object" "ob_object" {
   count = "${length(local.files)}"
   bucket = "${var.DOMAIN}"
-  key = "${lookup(local.files[count.index], "file")}"
-  source = "${lookup(local.files[count.index], "file")}"
+  key = "${lookup(local.files[count.index], "remote")}"
+  source = "${lookup(local.files[count.index], "local")}"
   acl = "public-read"
   content_type = "${lookup(local.files[count.index], "type")}"
-  etag = "${md5(file("${lookup(local.files[count.index], "file")}"))}"
+  etag = "${md5(file("${lookup(local.files[count.index], "local")}"))}"
 }
 
 resource "aws_acm_certificate" "fd_certificate" {
