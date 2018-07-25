@@ -25,11 +25,6 @@ resource "aws_s3_bucket" "fd_bucket" {
 locals {
   files = [
     {
-      local = ".foia-db.json"
-      remote = ".foia-db.json"
-      type = "application/json"
-    },
-    {
       local = "static/index.html"
       remote = "index.html"
       type = "text/html"
