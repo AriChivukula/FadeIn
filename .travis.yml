@@ -7,7 +7,7 @@ install:
 - yarn install
 jobs:
   include:
-  - stage: Lint
+  - stage: Build
     if: ( type = push ) AND ( branch != master )
     script:
     - yarn outdated
