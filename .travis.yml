@@ -13,7 +13,7 @@ jobs:
     - yarn outdated
     - yarn foia-db
     - yarn gulp build
-  - stage: Actualize
+  - stage: Deploy
     if: ( type = push ) AND ( branch = master )
     script:
     - yarn gulp build
@@ -22,7 +22,7 @@ jobs:
     - rm terraform_0.11.7_linux_amd64.zip
     - ./terraform init
     - ./terraform apply -auto-approve
-  - stage: Release
+  - stage: Actualize
     if: type = api
     script:
     - yarn foia-db --compile
