@@ -10,7 +10,7 @@ gulp.task(
   () => gulp.src("static/index.ts")
     .pipe(project())
     .js
-    .pipe(gulp.dest("static/index.js")),
+    .pipe(gulp.dest("static/")),
 );
 
 gulp.task(
@@ -19,7 +19,7 @@ gulp.task(
     .pipe(babel({
       presets: ["@babel/preset-env"],
     }))
-    .pipe(gulp.dest("static/index.js")),
+    .pipe(gulp.dest("static/")),
 );
 
 gulp.task(
@@ -28,7 +28,7 @@ gulp.task(
     .pipe(bro({
       transform: [["uglifyify", { global: true }]],
     }))
-    .pipe(gulp.dest("static/index.js")),
+    .pipe(gulp.dest("static/")),
 );
 
 gulp.task(
