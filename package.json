@@ -7,7 +7,7 @@
     "@babel/polyfill": "7.0.0-beta.54",
     "@babel/preset-env": "7.0.0-beta.54",
     "@types/node": "10.5.2",
-    "foia-db": "0.0.5",
+    "foia-db": "0.0.6",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0-beta.2",
     "gulp-bro": "1.0.3",
