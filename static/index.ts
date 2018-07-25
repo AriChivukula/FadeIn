@@ -1,7 +1,8 @@
 import { DB } from "foia-db";
 
 window.onload = (): void => {
-  const root: Element = document.getElementById("root");
+  // @ts-ignore
+  const root: HTMLElement = document.getElementById("root");
   root.append(`<div class="title">The Sword</div>`);
   root.append(`<div class="author">Ari Chivukula</div>`);
   root.append(`<br />`);
@@ -11,7 +12,7 @@ window.onload = (): void => {
       let next_is_spoken: boolean = false;
       DB.scene[scene_idx].lines.forEach(
         (line) => {
-          if (DB.character contains line) {
+          if (DB.character.hasOwnProperty(line)) {
             root.append(`<div class="speaker character-name" title="${DB.character[line].description}">${line}</div>`);
             next_is_spoken = true;
           } else if (next_is_spoken) {
