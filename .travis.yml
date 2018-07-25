@@ -8,11 +8,20 @@ install:
 jobs:
   include:
   - stage: Lint
-    if: type = push
+    if: ( type = push ) AND ( branch != master )
     script:
     - yarn outdated
     - yarn foia-db
     - yarn gulp build
+  - stage: Actualize
+    if: ( type = push ) AND ( branch = master )
+    script:
+    - yarn gulp build
+    - wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
+    - unzip terraform_0.11.7_linux_amd64.zip
+    - rm terraform_0.11.7_linux_amd64.zip
+    - ./terraform init
+    - ./terraform apply -auto-approve
   - stage: Release
     if: type = api
     script:
