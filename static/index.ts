@@ -8,7 +8,7 @@ window.onload = (): void => {
   root.insertAdjacentHTML("beforeend", `<br />`);
   Object.keys(DB.scene).forEach(
     (scene_idx) => {
-      root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${DB.location[DB.scene[scene_idx].location].description}">${DB.scene[scene_idx].exposed}. ${DB.scene[scene_idx].location} - ${DB.scene[scene_idx].time}</div>`);
+      root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${DB.location[DB.scene[scene_idx].location].description}">${DB.scene[scene_idx].exposure}. ${DB.scene[scene_idx].location} - ${DB.scene[scene_idx].time}</div>`);
       let next_is_spoken: boolean = false;
       DB.scene[scene_idx].lines.forEach(
         (line: string) => {
