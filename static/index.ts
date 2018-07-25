@@ -1,4 +1,4 @@
-import { DB } from "foia-db";
+const DB: any = FOIA_DB;
 
 window.onload = (): void => {
   // @ts-ignore
