@@ -6,8 +6,8 @@ window.onload = (): void => {
   root.insertAdjacentHTML("beforeend", `<div class="title">The Sword</div>`);
   root.insertAdjacentHTML("beforeend", `<div class="author">Ari Chivukula</div>`);
   root.insertAdjacentHTML("beforeend", `<br />`);
-  Object.keys(DB.vertices.filter(vert => vert.label === "VL-scene")).forEach(
-    (vert) => {
+  DB.vertices.filter((vert: any) => vert.label === "VL-scene").forEach(
+    (vert: any) => {
       const lMatches = DB.vertices.filter(vert => vert.label === "VL-location").filter(vert => vert.id === vert.properties.location);
       root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${lMatches[0].properties.description}">${vert.properties.exposure}. ${vert.properties.location} - ${vert.properties.time}</div>`);
       let next_is_spoken: boolean = false;
