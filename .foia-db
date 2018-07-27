@@ -1,42 +1,46 @@
 {
-  "folders": {
-    "character": {
-      "key": {
+  "VL-character": {
+    "id": {
+      "type": "string"
+    },
+    "edges": {
+    },
+    "properties": {
+      "description": {
+        "type": "string"
+      }
+    }
+  },
+  "VL-location": {
+    "id": {
+      "type": "string"
+    },
+    "edges": {
+    },
+    "properties": {
+      "description": {
+        "type": "string"
+      }
+    }
+  },
+  "VL-scene": {
+    "id": {
+      "type": "number"
+    },
+    "edges": {
+    },
+    "properties": {
+      "location": {
         "type": "string"
       },
-      "document": {
-        "description": {
-          "type": "string"
-        }
-      }
-    },
-    "location": {
-      "key": {
+      "time": {
         "type": "string"
       },
-      "document": {
-        "description": {
-          "type": "string"
-        }
-      }
-    },
-    "scene": {
-      "key": {
-        "type": "number"
+      "exposure": {
+        "type": "string"
       },
-      "document": {
-        "location": {
-          "type": "string"
-        },
-        "time": {
-          "type": "string"
-        },
-        "exposure": {
-          "type": "string"
-        },
-        "lines": {
-          "type": "string[]"
-        }
+      "lines": {
+        "type": "string[]"
       }
     }
   }
