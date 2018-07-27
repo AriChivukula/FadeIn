@@ -6,11 +6,11 @@ window.onload = (): void => {
   root.insertAdjacentHTML("beforeend", `<div class="title">The Sword</div>`);
   root.insertAdjacentHTML("beforeend", `<div class="author">Ari Chivukula</div>`);
   root.insertAdjacentHTML("beforeend", `<br />`);
-  Object.keys(DB.scene).forEach(
-    (scene_idx) => {
-      root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${DB.location[DB.scene[scene_idx].location].description}">${DB.scene[scene_idx].exposure}. ${DB.scene[scene_idx].location} - ${DB.scene[scene_idx].time}</div>`);
+  Object.keys(DB.vertices.filter(vert => vert.label === "VL-scene")).forEach(
+    (vert) => {
+      root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${DB.location[vert.properties.location].description}">${vert.properties.exposure}. ${vert.properties.location} - ${vert.properties.time}</div>`);
       let next_is_spoken: boolean = false;
-      DB.scene[scene_idx].lines.forEach(
+      vert.properties.lines.forEach(
         (line: string) => {
           if (DB.character.hasOwnProperty(line)) {
             root.insertAdjacentHTML("beforeend", `<div class="speaker character-name" title="${DB.character[line].description}">${line}</div>`);
