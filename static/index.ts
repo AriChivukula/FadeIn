@@ -6,14 +6,16 @@ window.onload = (): void => {
   root.insertAdjacentHTML("beforeend", `<div class="title">The Sword</div>`);
   root.insertAdjacentHTML("beforeend", `<div class="author">Ari Chivukula</div>`);
   root.insertAdjacentHTML("beforeend", `<br />`);
-  Object.keys(DB.scene).forEach(
-    (scene_idx) => {
-      root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${DB.location[DB.scene[scene_idx].location].description}">${DB.scene[scene_idx].exposure}. ${DB.scene[scene_idx].location} - ${DB.scene[scene_idx].time}</div>`);
+  DB.vertices.filter((vert: any) => vert.label === "VL-scene").forEach(
+    (vert: any) => {
+      const lMatches = DB.vertices.filter((vert: any) => vert.label === "VL-location").filter((vert: any) => vert.id === vert.properties.location);
+      root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${lMatches[0].properties.description}">${vert.properties.exposure}. ${vert.properties.location} - ${vert.properties.time}</div>`);
       let next_is_spoken: boolean = false;
-      DB.scene[scene_idx].lines.forEach(
+      vert.properties.lines.forEach(
         (line: string) => {
-          if (DB.character.hasOwnProperty(line)) {
-            root.insertAdjacentHTML("beforeend", `<div class="speaker character-name" title="${DB.character[line].description}">${line}</div>`);
+          const cMatches = DB.vertices.filter((vert: any) => vert.label === "VL-character").filter((vert: any) => vert.id === line);
+          if (cMatches.length > 0) {
+            root.insertAdjacentHTML("beforeend", `<div class="speaker character-name" title="${cMatches[0].properties.description}">${line}</div>`);
             next_is_spoken = true;
           } else if (next_is_spoken) {
             root.insertAdjacentHTML("beforeend", `<div class="spoken">${line}</div>`);
