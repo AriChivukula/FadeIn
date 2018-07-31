@@ -8,12 +8,12 @@ window.onload = (): void => {
   root.insertAdjacentHTML("beforeend", `<br />`);
   DB.vertices.filter((vert: any) => vert.label === "scene").forEach(
     (vert: any) => {
-      const lMatches = DB.vertices.filter((vert: any) => vert.label === "location").filter((vert: any) => vert.id === vert.properties["location"].id);
+      const lMatches = DB.vertices.filter((v: any) => v.label === "location").filter((v: any) => v.id === vert.properties["location"].id);
       root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${lMatches[0].properties["description"].id}">${vert.properties["exposure"].id}. ${vert.properties["location"].id} - ${vert.properties["time"].id}</div>`);
       let next_is_spoken: boolean = false;
       vert.properties["lines"].id.forEach(
         (line: string) => {
-          const cMatches = DB.vertices.filter((vert: any) => vert.label === "character").filter((vert: any) => vert.id === line);
+          const cMatches = DB.vertices.filter((v: any) => v.label === "character").filter((v: any) => v.id === line);
           if (cMatches.length > 0) {
             root.insertAdjacentHTML("beforeend", `<div class="speaker character-name" title="${cMatches[0].properties["description"].id}">${line}</div>`);
             next_is_spoken = true;
