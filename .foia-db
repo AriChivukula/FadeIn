@@ -1,5 +1,5 @@
 {
-  "VL-character": {
+  "character": {
     "id": {
       "type": "string"
     },
@@ -7,11 +7,12 @@
     },
     "properties": {
       "description": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       }
     }
   },
-  "VL-location": {
+  "location": {
     "id": {
       "type": "string"
     },
@@ -19,11 +20,12 @@
     },
     "properties": {
       "description": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       }
     }
   },
-  "VL-scene": {
+  "scene": {
     "id": {
       "type": "number"
     },
@@ -31,16 +33,20 @@
     },
     "properties": {
       "location": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       },
       "time": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       },
       "exposure": {
-        "type": "string"
+        "type": "string",
+        "metadata": {}
       },
       "lines": {
-        "type": "string[]"
+        "type": "string[]",
+        "metadata": {}
       }
     }
   }
