@@ -6,7 +6,7 @@
     "@babel/core": "7.0.0",
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.0.0",
-    "@types/node": "10.9.4",
+    "@types/node": "10.12.2",
     "foia-db": "0.2.0",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0",
