@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.1.2",
+    "@babel/core": "7.1.5",
     "@babel/polyfill": "7.0.0",
-    "@babel/preset-env": "7.1.0",
+    "@babel/preset-env": "7.1.5",
     "@types/node": "10.12.2",
     "foia-db": "0.2.0",
     "gulp": "4.0.0",
@@ -15,7 +15,7 @@
     "gulp-typescript": "5.0.0-alpha.3",
     "picaresque": "0.0.0",
     "ts-node": "7.0.1",
-    "typescript": "3.1.4",
+    "typescript": "3.1.6",
     "uglifyify": "5.0.1"
   }
 }
