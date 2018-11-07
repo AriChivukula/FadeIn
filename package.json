@@ -3,19 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.0.0",
+    "@babel/core": "7.1.2",
     "@babel/polyfill": "7.0.0",
-    "@babel/preset-env": "7.0.0",
-    "@types/node": "10.9.4",
+    "@babel/preset-env": "7.1.0",
+    "@types/node": "10.12.1",
     "foia-db": "0.2.0",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0",
     "gulp-bro": "1.0.3",
-    "gulp-string-replace": "1.1.1",
+    "gulp-string-replace": "1.1.2",
     "gulp-typescript": "5.0.0-alpha.3",
     "picaresque": "0.0.0",
     "ts-node": "7.0.1",
-    "typescript": "3.0.3",
+    "typescript": "3.1.4",
     "uglifyify": "5.0.1"
   }
 }
