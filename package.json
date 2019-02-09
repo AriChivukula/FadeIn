@@ -5,8 +5,8 @@
   "dependencies": {
     "@babel/core": "7.2.2",
     "@babel/polyfill": "7.2.5",
-    "@babel/preset-env": "7.2.3",
-    "@types/node": "10.12.22",
+    "@babel/preset-env": "7.3.1",
+    "@types/node": "10.12.24",
     "foia-db": "0.2.0",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0",
@@ -14,8 +14,8 @@
     "gulp-string-replace": "1.1.2",
     "gulp-typescript": "5.0.0",
     "picaresque": "0.0.0",
-    "ts-node": "7.0.1",
-    "typescript": "3.2.2",
+    "ts-node": "8.0.2",
+    "typescript": "3.3.3",
     "uglifyify": "5.0.1"
   }
 }
