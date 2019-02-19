@@ -6,7 +6,7 @@ window.onload = (): void => {
   root.insertAdjacentHTML("beforeend", `<div class="title">The Sword</div>`);
   root.insertAdjacentHTML("beforeend", `<div class="author">Ari Chivukula</div>`);
   root.insertAdjacentHTML("beforeend", `<br />`);
-  DB.vertices.filter((vert: any) => vert.label === "scene").forEach(
+  DB.vertices.filter((vert: any) => vert.label === "scene").sort((a, b) => parseInt(a.id) - parseInt(b.id)).forEach(
     (vert: any) => {
       const lMatches = DB.vertices.filter((v: any) => v.label === "location").filter((v: any) => v.id === vert.properties["location"].id);
       root.insertAdjacentHTML("beforeend", `<div class="located location-name" title="${lMatches[0].properties["description"].id}">${vert.properties["exposure"].id}. ${vert.properties["location"].id} - ${vert.properties["time"].id}</div>`);
