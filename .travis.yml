@@ -5,7 +5,9 @@ cache: yarn
 install:
 - npm install --global --upgrade yarn
 - yarn install
-- yarn picaresque
+- wget https://releases.hashicorp.com/terraform/0.12.0-rc1/terraform_0.12.0-rc1_linux_amd64.zip
+- unzip terraform_0.12.0-rc1_linux_amd64.zip
+- rm terraform_0.12.0-rc1_linux_amd64.zip
 jobs:
   include:
   - stage: Build
@@ -14,13 +16,12 @@ jobs:
     - yarn outdated
     - yarn foia-db
     - yarn gulp build
+    - ./terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=master.tfstate"
+    - ./terraform plan
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
     script:
     - yarn gulp build
-    - wget https://releases.hashicorp.com/terraform/0.12.0-rc1/terraform_0.12.0-rc1_linux_amd64.zip
-    - unzip terraform_0.12.0-rc1_linux_amd64.zip
-    - rm terraform_0.12.0-rc1_linux_amd64.zip
     - ./terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=master.tfstate"
     - ./terraform apply -auto-approve
   - stage: Actualize
