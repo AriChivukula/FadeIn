@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "fd_bucket" {
   bucket        = "${var.DOMAIN}"
   force_destroy = true
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 
@@ -57,7 +57,7 @@ resource "aws_acm_certificate" "fd_certificate" {
   subject_alternative_names = ["*.${var.DOMAIN}"]
   validation_method         = "DNS"
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 }
@@ -102,7 +102,7 @@ resource "aws_cloudfront_distribution" "fd_distribution" {
     }
   }
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 
@@ -115,7 +115,7 @@ resource "aws_cloudfront_distribution" "fd_distribution" {
 resource "aws_route53_zone" "fd_zone" {
   name = "${var.DOMAIN}."
 
-  tags {
+  tags = {
     Name = "${var.NAME}"
   }
 }
