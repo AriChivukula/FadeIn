@@ -28,5 +28,5 @@ jobs:
     os: osx
     osx_image: xcode10.2
     script:
-    - wget https://beta.unity3d.com/download/fa7740529556/MacEditorInstaller/Unity.pkg
-    - ./Unity.phg
+    - wget --progress=dot:mega https://download.unity3d.com/download_unity/dc414eb9ed43/MacEditorInstaller/Unity.pkg
+    - ./Unity.pkg --unattended --components='Unity'
