@@ -29,5 +29,6 @@ jobs:
     osx_image: xcode10.2
     script:
     - wget --progress=dot:mega https://download.unity3d.com/download_unity/dc414eb9ed43/MacEditorInstaller/Unity.pkg
+    - mkdir Unity3D
     - sudo installer -package Unity.pkg -target ./Unity3D
     - ./Unity3D/Editor/Unity -batchmode -nographics -silent-crashes -force-free -projectPath Unity/ -quit
