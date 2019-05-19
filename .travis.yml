@@ -3,6 +3,8 @@ node_js:
 - node
 cache: yarn
 install:
+- npm install --global --upgrade yarn
+- yarn install
 - wget https://releases.hashicorp.com/terraform/0.12.0-rc1/terraform_0.12.0-rc1_linux_amd64.zip
 - unzip terraform_0.12.0-rc1_linux_amd64.zip
 - rm terraform_0.12.0-rc1_linux_amd64.zip
@@ -15,15 +17,16 @@ jobs:
     - yarn gulp build
     - ./terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=master.tfstate"
     - ./terraform plan
-  - stage: Build
-    if: ( type = push ) AND ( branch != master )
-    os: osx
-    osx_image: xcode10.2
-    script:
-    - curl https://beta.unity3d.com/download/fa7740529556/MacEditorInstaller/Unity.pkg
   - stage: Deploy
     if: ( type = push ) AND ( branch = master )
     script:
     - yarn gulp build
     - ./terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=master.tfstate"
     - ./terraform apply -auto-approve
+  - stage: Unity
+    if: ( type = push ) AND ( branch != master )
+    os: osx
+    osx_image: xcode10.2
+    script:
+    - wget https://beta.unity3d.com/download/fa7740529556/MacEditorInstaller/Unity.pkg
+    - ./Unity.phg
