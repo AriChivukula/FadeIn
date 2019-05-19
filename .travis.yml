@@ -14,7 +14,6 @@ jobs:
     if: ( type = push ) AND ( branch != master )
     script:
     - yarn outdated
-    - yarn foia-db
     - yarn gulp build
     - ./terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=master.tfstate"
     - ./terraform plan
@@ -24,11 +23,11 @@ jobs:
     - yarn gulp build
     - ./terraform init -backend-config="bucket=${TF_VAR_DOMAIN}" -backend-config="key=master.tfstate"
     - ./terraform apply -auto-approve
-  - stage: Actualize
-    if: type = api
+  - stage: Unity
+    if: ( type = push ) AND ( branch != master )
+    os: osx
+    osx_image: xcode10.2
     script:
-    - yarn foia-db --compile
-    - git remote add target "https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git"
-    - git add -A
-    - git commit -m "ACTUALIZE ${TRAVIS_BUILD_NUMBER}"
-    - git push target HEAD:$TRAVIS_BRANCH
+    - wget --progress=dot:mega https://download.unity3d.com/download_unity/dc414eb9ed43/MacEditorInstaller/Unity.pkg
+    - sudo installer -package Unity.pkg -target /
+    - /Applications/Unity/Unity.app/Contents/MacOS/Unity -username "$UNITY_USER" -password "$UNITY_PASSWORD" -nographics -batchmode -silent-crashes -force-free -projectPath Unity/ -quit || true
