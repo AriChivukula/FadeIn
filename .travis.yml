@@ -30,4 +30,4 @@ jobs:
     script:
     - wget --progress=dot:mega https://download.unity3d.com/download_unity/dc414eb9ed43/MacEditorInstaller/Unity.pkg
     - sudo installer -package Unity.pkg -target /
-    - /Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -nographics -silent-crashes -force-free -projectPath Unity/ -quit
+    - /Applications/Unity/Unity.app/Contents/MacOS/Unity -batchmode -silent-crashes -force-free -projectPath Unity/ -quit
